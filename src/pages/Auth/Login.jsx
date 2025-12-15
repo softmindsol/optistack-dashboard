@@ -23,7 +23,7 @@ const navigate=useNavigate()
       //     background: "linear-gradient(35deg, #1B2966 0%, #137DC5 38%)",
       //   }}
     >
-      <div className="w-[90%] h-[540px] sm:w-[540px] sm:h-[601px] bg-white  rounded-[9.17px] shadow-2xl p-8 sm:p-10">
+      <div className="w-[90%] h-[540px] sm:w-[500px] lg:w-[540px] sm:h-[601px] bg-white  rounded-[9.17px] shadow-2xl p-8 sm:p-10">
         <div className="w-full h-full flex flex-col justify-center items-center">
           {/* Logo and Header */}
           <div className="flex justify-center items-center gap-3 mb-8 w-full b">
@@ -31,10 +31,10 @@ const navigate=useNavigate()
               <img src={logo} alt="Logo" />
             </div>
             <div className="flex flex-col ">
-              <h1 className="text-2xl sm:text-[26px] font-semibold text-[#202124] mb-1 font-poppins">
+              <h1 className="text-2xl sm:text-[26px] font-semibold text-[#202124] mb-1 font-rethink">
                 SUPPTRACKR
               </h1>
-              <p className="text-[12px] text-[#6B7280] tracking-wide font-poppins">
+              <p className="text-[12px] text-[#6B7280] font-semibold tracking-wide font-rethink">
                 TRACK & OPTIMIZE
               </p>
             </div>
@@ -49,7 +49,9 @@ const navigate=useNavigate()
             <div className="space-y-5">
               {/* Email Field */}
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-[#131313] font-rethink">
+                <Label
+                  htmlFor="email"
+                  className="text-[#131313] font-normal  font-rethink">
                   Email
                 </Label>
                 <Input
@@ -67,8 +69,7 @@ const navigate=useNavigate()
                 <div className="flex justify-between items-center">
                   <Label
                     htmlFor="password"
-                    className="text-[#202124] font-medium"
-                    style={{ fontFamily: "Poppins, sans-serif" }}>
+                    className="text-[#202124] font-normal  font-rethink">
                     Password
                   </Label>
                   <button
@@ -106,9 +107,7 @@ const navigate=useNavigate()
                 className="w-full h-12 text-[#FCFCFD] font-semibold font-rethink text-base hover:opacity-90 transition-opacity"
                 style={{
                   backgroundColor: "#4CA6EB",
-                }}
-                
-                >
+                }}>
                 Login now
               </Button>
             </div>

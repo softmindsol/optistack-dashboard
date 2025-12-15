@@ -21,6 +21,14 @@ export default {
 			rethink: [
 				'"Rethink Sans"',
 				'sans-serif'
+			],
+			outfit: [
+				'"Outfit"',
+				'sans-serif'
+			],
+			sora:[
+				'"Sora"',
+				'sans-serif'
 			]
 		},
 		extend: {

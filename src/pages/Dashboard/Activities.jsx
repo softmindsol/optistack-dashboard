@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {  MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import {
   AreaChart,
   Area,
@@ -12,31 +12,35 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import {moodData, activities, supplements, installations, symptomsData, activeUsersData} from '@/utils/constants/chart'
+import {
+  moodData,
+  activities,
+  supplements,
+  installations,
+  symptomsData,
+  activeUsersData,
+} from "@/utils/constants/chart";
 export default function Activities() {
   const [activeTab, setActiveTab] = useState("Monthly");
-
- 
-
 
   return (
     <div className="min-h-screen w-full bg-slate-50 py-6 font-rethink text-[#101828]">
       <div className=" space-y-6">
         {/* Active Users & Top Symptoms */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
           {/* Active Users Chart */}
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="text-lg font-semibold text-[#0F1729]">
+                <CardTitle className="text-lg font-semibold !text-[#0F1729]">
                   Active Users
                 </CardTitle>
-                <div className="flex gap-2 bg-[#F2F4F7] rounded-[8px] p-1 ">
+                <div className="flex md:gap-2 bg-[#F2F4F7] rounded-[8px] p-1 ">
                   {["Monthly", "Quarterly", "Annually"].map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`px-3 py-1 text-[#101828]  text-sm rounded-md  transition-colors ${
+                      className={`px-3 py-1 text-[#101828]  text-sm rounded-md font-outfit  font-medium transition-colors ${
                         activeTab === tab
                           ? "bg-white rounded-[6px]"
                           : "text-[#667085] hover:bg-slate-300"
@@ -48,46 +52,66 @@ export default function Activities() {
               </div>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={250}>
-                <AreaChart data={activeUsersData}>
-                  <defs>
-                    <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#4DB1EA" stopOpacity={0.8} />
-                      <stop
-                        offset="95%"
-                        stopColor="#4DB1EA"
-                        stopOpacity={0.1}
-                      />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis
-                    dataKey="day"
-                    stroke="#64748b"
-                    tick={{ fontSize: 12 }}
-                  />
-                  <YAxis
-                    stroke="#64748b"
-                    tick={{ fontSize: 12 }}
-                    domain={[0, 600]}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "#fff",
-                      border: "1px solid #e2e8f0",
-                      borderRadius: "6px",
-                    }}
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="users"
-                    stroke="#4DB1EA"
-                    strokeWidth={2}
-                    fillOpacity={1}
-                    fill="url(#colorUsers)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+              <CardContent className="px-2 sm:px-6">
+                <ResponsiveContainer width="100%" height={250}>
+                  <AreaChart
+                    data={activeUsersData}
+                    margin={{ top: 10, right: 10, left: -8, bottom: 0 }}>
+                    <defs>
+                      <linearGradient
+                        id="colorUsers"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1">
+                        <stop
+                          offset="5%"
+                          stopColor="#4DB1EA"
+                          stopOpacity={0.8}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor="#4DB1EA"
+                          stopOpacity={0.1}
+                        />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis
+                      dataKey="day"
+                      stroke="#65758B"
+                      tick={{ fontSize: 11 }}
+                      tickLine={false}
+                      axisLine={{ stroke: "#e2e8f0" }}
+                      interval="preserveStartEnd"
+                    />
+                    <YAxis
+                      stroke="#65758B"
+                      tick={{ fontSize: 11 }}
+                      tickLine={false}
+                      axisLine={{ stroke: "#e2e8f0" }}
+                      domain={[0, 600]}
+                      width={35}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#fff",
+                        border: "1px solid #e2e8f0",
+                        borderRadius: "6px",
+                        fontSize: "12px",
+                      }}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="users"
+                      stroke="#4DB1EA"
+                      strokeWidth={2}
+                      fillOpacity={1}
+                      fill="url(#colorUsers)"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </CardContent>
             </CardContent>
           </Card>
 
@@ -100,15 +124,17 @@ export default function Activities() {
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={symptomsData}>
+                <BarChart
+                  data={symptomsData}
+                  margin={{ top: 10, right: 10, left: -24, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                   <XAxis
                     dataKey="name"
-                    stroke="#64748b"
+                    stroke="#65758B"
                     tick={{ fontSize: 12 }}
                   />
                   <YAxis
-                    stroke="#64748b"
+                    stroke="#65758B"
                     tick={{ fontSize: 12 }}
                     domain={[0, 60]}
                   />
@@ -126,9 +152,9 @@ export default function Activities() {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-5 gap-y-6 xl:gap-6 xl:gap-y-0">
           {/* App Installations by Location */}
-          <Card className="lg:col-span-3">
+          <Card className="xl:col-span-3">
             <CardHeader>
               <CardTitle className="text-lg font-semibold flex items-center gap-2 text-[#0F1729]">
                 <MapPin className="w-5 h-5" />
@@ -143,11 +169,13 @@ export default function Activities() {
                       <span className="font-medium text-[#0F1729]">
                         {item.country}
                       </span>
-                      <span className="text-[#65758B]">{item.users}</span>
+                      <span className="text-[#65758B] !font-sora">
+                        {item.users}
+                      </span>
                     </div>
                     <div className="w-full bg-[#F1F5F9] rounded-full h-2">
                       <div
-                        className="bg-[#4CA6EB] h-2 rounded-full transition-all"
+                        className="bg-[#4CA6EB] h-2 rounded-full  transition-all"
                         style={{ width: `${item.percentage}%` }}
                       />
                     </div>
@@ -164,8 +192,8 @@ export default function Activities() {
                 Users Mood Distribution
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col items-center py-8">
-              <div className="relative w-64 h-64 mb-8">
+            <CardContent className="flex flex-col items-center ">
+              <div className="relative w-64 h-64 ">
                 <svg viewBox="0 0 200 200" className="transform -rotate-90">
                   {moodData.map((item, index) => {
                     const prevPercentage = moodData
@@ -201,7 +229,7 @@ export default function Activities() {
                 {moodData.map((item, index) => (
                   <div
                     key={index}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium ${
+                    className={`px-4 py-1.5 rounded-full text-[12px] font-medium ${
                       item.mood === "Great"
                         ? "bg-[#16A2491A] text-[#16A249]"
                         : item.mood === "Good"
@@ -220,9 +248,9 @@ export default function Activities() {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1  gap-6">
           {/* Top Supplements */}
-          <Card className="lg:col-span-3">
+          <Card className="lg:col-span">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-[#0F1729]">
                 Top Supplements (30 Days)

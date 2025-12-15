@@ -32,9 +32,9 @@ export default function Sidebar({ children }) {
       {/* Mobile Menu Toggle */}
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-lg">
+        className={`${isMobileMenuOpen ? "hidden" : ""} lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-lg`}>
         {isMobileMenuOpen ? (
-          <X className="w-6 h-6 text-[#202124]" />
+          <X className="w-6 h-6  text-[#202124]" />
         ) : (
           <Menu className="w-6 h-6 text-[#202124]" />
         )}
@@ -63,12 +63,12 @@ export default function Sidebar({ children }) {
         `}>
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="p-6 border-b border-white border-opacity-20">
+          <div className="p-[19.5px] border-b border-white border-opacity-20">
             <h1 className="text-2xl font-bold text-white">SuppTrackr</h1>
           </div>
 
           {/* Menu Items */}
-          <nav className="flex-1 p-4 space-y-2">
+          <nav className="flex-1 px-4 py-9  space-y-2">
             {menuItems.map((item) => {
               const Icon = item.icon;
 

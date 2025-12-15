@@ -8,11 +8,11 @@ export default function Header() {
 
   return (
     <header
-      className="bg-[#F8F9FA] px-4 sm:px-6 lg:px-8 py-3"
+      className="bg-[#ffff] px-4 sm:px-6 lg:px-8 py-3"
       style={{ fontFamily: "Poppins, sans-serif" }}>
       <div className="flex items-center justify-between gap-4">
         {/* Search Bar */}
-        <div className="flex-1 max-w-2xl">
+        <div className="flex-1 max-w-2xl pl-12">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <Input
@@ -20,7 +20,7 @@ export default function Header() {
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 h-12 bg-white border-0 rounded-full shadow-sm focus:ring-2 focus:ring-gray-200 text-[#202124] placeholder:text-gray-400"
+              className="w-full pl-12 pr-4 h-12 bg-[#F3F4F6] border-0 rounded-full shadow-sm focus:ring-2 focus:ring-[#E5E7EB] text-[#202124] placeholder:text-gray-400"
               style={{ fontFamily: "Poppins, sans-serif" }}
             />
           </div>
@@ -32,10 +32,10 @@ export default function Header() {
           <button className="relative">
             <Bell className="w-6 h-6 text-[#202124]" />
             {notificationCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full"></span>
+              <span className="absolute -top-1 -right-[2px] w-2 h-2 bg-red-500 rounded-full"></span>
             )}
           </button>
-
+          <div className="w-[1px] h-8 rounded-full bg-[#E5E7EB]" />
           {/* User Info */}
           <div className="flex items-center gap-3">
             <div className="hidden sm:block text-right">

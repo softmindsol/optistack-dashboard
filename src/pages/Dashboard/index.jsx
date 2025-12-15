@@ -46,15 +46,15 @@ export default function Dashboard() {
     <div className="min-h-screen font-rethink text-[#0F1729] ">
       <div className="w-full ">
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-4">
           <h1 className="text-2xl sm:text-3xl font-bold  mb-1">Dashboard</h1>
-          <p className="text-sm text-[#65758B]">
+          <p className=" text-[#65758B]">
             Welcome back, here's your overview
           </p> 
         </div>
 
         {/* Stats Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {statsCards.map((card, index) => {
             const Icon = card.icon;
             return (
@@ -62,7 +62,7 @@ export default function Dashboard() {
                 key={index}
                 className="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
                 {/* Header with Title and Icon */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-2">
                   <p className="text-sm text-[#65758B] font-medium">
                     {card.title}
                   </p>
@@ -82,8 +82,8 @@ export default function Dashboard() {
                 {/* Change Indicator */}
                 <div className="flex items-center gap-1">
                   <p
-                    className={`text-xs font-medium ${
-                      card.changePositive ? "text-green-600" : "text-red-600"
+                    className={`text-[14px] font-normal ${
+                      card.changePositive ? "text-[#16A249]" : "text-red-600"
                     }`}>
                     {card.change}
                   </p>
