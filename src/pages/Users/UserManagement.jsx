@@ -106,14 +106,12 @@ export default function UsersManagement() {
                         key={index}
                         className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
                         <td className="py-4 px-4">
-                          <span className="text-sm font-medium text-[#0F1729]">
+                          <span className=" font-medium text-[#0F1729]">
                             {user.name}
                           </span>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <span className="text-sm text-[#65758B]">
-                            {user.email}
-                          </span>
+                          <span className=" text-[#65758B]">{user.email}</span>
                         </td>
                         <td className="py-4 px-4 text-center">
                           <span
@@ -131,7 +129,7 @@ export default function UsersManagement() {
                           </span>
                         </td>
                         <td className="py-4 px-4 text-center ">
-                          <span className="text-sm font-medium text-[#0F1729]">
+                          <span className=" font-normal text-[#0F1729]">
                             {user.stackCount}
                           </span>
                         </td>
@@ -147,15 +145,15 @@ export default function UsersManagement() {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-200">
-                <span className="text-sm text-[#64748B]">
+              <div className="flex items-center justify-between mt-6 pt-4">
+                <span className="text-sm font-medium text-[#64748B] font-poppins">
                   Showing 5 of 42 results
                 </span>
-                <div className="flex gap-2">
-                  <button className="px-4 py-2 text-sm font-medium text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
+                <div className="flex gap-2 font-segoeUI">
+                  <button className="px-4 py-2 text-sm font-semibold text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
                     Previous
                   </button>
-                  <button className="px-4 py-2 text-sm font-medium text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
+                  <button className="px-4 py-2 text-sm font-semibold text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
                     Next
                   </button>
                 </div>

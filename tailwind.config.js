@@ -29,6 +29,10 @@ export default {
 			sora:[
 				'"Sora"',
 				'sans-serif'
+			],
+			segoeUI:[
+				'"Segoe UI"',
+				'sans-serif'
 			]
 		},
 		extend: {
