@@ -44,29 +44,29 @@ export default function UsersManagement() {
     ];
 
     return (
-      <div className="  p-5  font-rethink">
+      <div className="  sm:p-5  font-rethink">
         <div className="">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-[#0F1729] mb-2">Users</h1>
-            <p className="text-[#65758B]">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#0F1729] mb-2">Users</h1>
+            <p className="text-[#65758B] text-sm sm:text-base">
               Manage all users and their activity
             </p>
           </div>
 
           {/* Card Container */}
-          <Card className="border border-slate-200">
+          <Card className="border border-[#E5E7EB]">
             <CardContent className="p-6">
               {/* Search and Filter */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#65758B] w-5 h-5" />
                   <input
                     type="text"
                     placeholder="Search users..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 bg-[#E5E7EB] border border-slate-200 rounded-lg focus:outline-none focus:ring-2   focus:border-transparent text-sm"
+                    className="w-full pl-10 pr-4 py-2.5 bg-[#E5E7EB] border border-slate-200 rounded-lg focus:outline-none focus:ring-2 placeholder:text-[#65758B] focus:border-transparent text-sm"
                   />
                 </div>
                 <button className="flex items-center gap-2 px-4 py-2.5 bg-[#E5E7EB] border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors text-sm font-medium text-slate-700">
@@ -79,23 +79,23 @@ export default function UsersManagement() {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-slate-200 text-[#65758B]">
-                      <th className="text-left py-3 px-4 text-sm font-semibold ">
+                    <tr className="border-b border-slate-200 text-[#65758B] text-xs sm:text-sm">
+                      <th className="text-left py-3 px-4  font-semibold ">
                         Name
                       </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold ">
+                      <th className="text-center py-3 px-4 font-semibold ">
                         Email
                       </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold ">
+                      <th className="text-center py-3 px-4  font-semibold ">
                         Status
                       </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold ">
+                      <th className="text-center py-3 px-4  font-semibold ">
                         Last Activity
                       </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold">
+                      <th className="text-center py-3 px-4  font-semibold">
                         Stack Count
                       </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold ">
+                      <th className="text-center py-3 px-4  font-semibold ">
                         Actions
                       </th>
                     </tr>
@@ -106,16 +106,18 @@ export default function UsersManagement() {
                         key={index}
                         className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
                         <td className="py-4 px-4">
-                          <span className=" font-medium text-[#0F1729]">
+                          <span className="text-sm sm:text-[16px] font-medium text-[#0F1729]">
                             {user.name}
                           </span>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <span className=" text-[#65758B]">{user.email}</span>
+                          <span className="text-sm sm:text-[16px] text-[#65758B]">
+                            {user.email}
+                          </span>
                         </td>
                         <td className="py-4 px-4 text-center">
                           <span
-                            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
+                            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium sm:text-sm ${
                               user.status === "Active"
                                 ? "bg-[#32D48E] text-[#FFFFFF]"
                                 : "bg-[#F3F4F6] text-[#65758B]"
@@ -124,17 +126,17 @@ export default function UsersManagement() {
                           </span>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <span className="text-sm text-[#65758B]">
+                          <span className="text-xs sm:text-sm text-[#65758B]">
                             {user.lastActivity}
                           </span>
                         </td>
                         <td className="py-4 px-4 text-center ">
-                          <span className=" font-normal text-[#0F1729]">
+                          <span className="text-sm sm:text-[16px] font-normal text-[#0F1729]">
                             {user.stackCount}
                           </span>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <button className="text-sm font-medium text-[#0F1729] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] p-2 hover:text-[#0F1729] transition-colors">
+                          <button className="text-xs sm:text-sm font-medium text-[#0F1729] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] p-2 hover:text-[#0F1729] transition-colors">
                             View Details
                           </button>
                         </td>
@@ -145,15 +147,15 @@ export default function UsersManagement() {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between mt-6 pt-4">
-                <span className="text-sm font-medium text-[#64748B] font-poppins">
+              <div className="flex sm:flex-row  flex-col sm:gap-0 gap-4  items-center sm:justify-between  mt-6 pt-4">
+                <span className="text-xs sm:text-sm font-medium  text-[#64748B] font-poppins">
                   Showing 5 of 42 results
                 </span>
                 <div className="flex gap-2 font-segoeUI">
-                  <button className="px-4 py-2 text-sm font-semibold text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
+                  <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
                     Previous
                   </button>
-                  <button className="px-4 py-2 text-sm font-semibold text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
+                  <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#64748B] rounded-[10px] bg-[#E5E7EB] border border-[#F6F7F8] hover:text-[#0F1729] transition-colors">
                     Next
                   </button>
                 </div>

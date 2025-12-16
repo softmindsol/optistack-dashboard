@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building2, Users, Bell, X, Mail } from "lucide-react";
+import { Building2, Users, Bell, X, Mail, ChevronDown } from "lucide-react";
 
 export default function SettingsApp() {
   const [currentPage, setCurrentPage] = useState("general");
@@ -29,7 +29,7 @@ export default function SettingsApp() {
   return (
     <div className="min-h-screen font-rethink bg-[#FFFFFF] rounded-[12px] py-6 px-5 border ">
       <div className="">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-5 xl:gap-8">
           {/* Left Sidebar */}
           <div className="lg:col-span-1 ">
             <div className="mb-4">
@@ -41,9 +41,9 @@ export default function SettingsApp() {
                   <button
                     key={item.id}
                     onClick={() => setCurrentPage(item.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-[8px] hover:shadow-sm hover:shadow-[#0000000D] text-sm font-medium transition-colors ${
+                    className={`w-full flex items-center gap-3 px-4 py-2.5  rounded-[8px] hover:shadow-sm hover:shadow-[#0000000D] text-sm font-medium transition-colors ${
                       currentPage === item.id
-                        ? "bg-[#FFFFFF] text-[#0284C7]"
+                        ? "bg-[#FFFFFF] text-[#0284C7] border-[1px] border-[#E2E8F0] shadow-sm shadow-[#0000000D]"
                         : "text-[#64748B] hover:bg-slate-100"
                     }`}>
                     <item.icon className="w-4 h-4" />
@@ -137,7 +137,7 @@ export default function SettingsApp() {
                         <button
                           onClick={() => setWearableEnabled(!wearableEnabled)}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                            wearableEnabled ? "bg-[#4CA6EB]" : "bg-transparent"
+                            wearableEnabled ? "bg-[#4CA6EB]" : "bg-gray-300"
                           }`}>
                           <span
                             className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
@@ -222,8 +222,8 @@ export default function SettingsApp() {
                 </div>
 
                 <Card className="bg-white border border-slate-200 shadow-sm">
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
                       <div className="flex-1">
                         <h3 className="text-base font-semibold text-[#0F172A] mb-1">
                           Push Notifications
@@ -254,24 +254,25 @@ export default function SettingsApp() {
         </div>
       </div>
 
-      {/* Invite Team Member Modal */}
       {showInviteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-bold text-[#0F172A]">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 transition-opacity">
+          <div className="bg-white shadow-2xl max-w-[500px] w-full rounded-[16px] overflow-hidden transform transition-all">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-slate-100">
+              <h2 className="text-xl font-semibold text-[#0F172A]">
                 Invite Team Member
               </h2>
               <button
                 onClick={() => setShowInviteModal(false)}
-                className="text-slate-400 hover:text-slate-600">
+                className="text-slate-400 hover:text-slate-600 transition-colors bg-transparent p-1 rounded-full hover:bg-slate-50">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="space-y-4">
+            {/* Body */}
+            <div className="p-6 space-y-6">
               <div>
-                <label className="block text-sm font-medium text-[#334155] mb-2">
+                <label className="block text-sm font-semibold text-[#334155] mb-2">
                   Full Name
                 </label>
                 <input
@@ -279,54 +280,58 @@ export default function SettingsApp() {
                   placeholder="e.g., Dr. Jane Doe"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  className="w-full px-4 py-3 border border-slate-200 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#4CA6EB]/20 focus:border-[#4CA6EB] text-sm transition-all placeholder:text-slate-400"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#334155] mb-2">
+                <label className="block text-sm font-semibold text-[#334155] mb-2">
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+                  <Mail className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
                   <input
                     type="email"
                     placeholder="jane@supptrackr.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                    className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#4CA6EB]/20 focus:border-[#4CA6EB] text-sm transition-all placeholder:text-slate-400"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#334155] mb-2">
+                <label className="block text-sm font-semibold text-[#334155] mb-2">
                   Role
                 </label>
-                <select
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  className="w-full px-4 py-2.5 text-[#334155] text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-                  <option>Analyst (View Data)</option>
-                  <option>Editor (Manage Content)</option>
-                  <option>Admin (Full Access)</option>
-                </select>
-                <p className="text-xs text-[#64748B] mt-2">
+                <div className="relative">
+                  <select
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    className="w-full px-4 py-3 text-[#334155] text-sm border border-slate-200 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[#4CA6EB]/20 focus:border-[#4CA6EB] bg-white transition-all appearance-none pr-10">
+                    <option>Analyst (View Data)</option>
+                    <option>Editor (Manage Content)</option>
+                    <option>Admin (Full Access)</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4 pointer-events-none" />
+                </div>
+                <p className="text-[13px] text-[#64748B] mt-2.5 leading-relaxed">
                   Analysts can view aggregated insights but cannot change
                   platform settings.
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-3 mt-6">
+            {/* Footer */}
+            <div className="flex items-center justify-end gap-3 px-6 py-4 bg-[#F8FAFC] border-t border-slate-100">
               <button
                 onClick={() => setShowInviteModal(false)}
-                className="flex-1 px-4 py-2.5 border border-slate-200 rounded-lg text-sm font-medium text-[#475569] hover:bg-slate-50 transition-colors">
+                className="px-5 py-2.5 text-sm font-semibold text-[#64748B] hover:text-[#0F172A] transition-colors">
                 Cancel
               </button>
               <button
                 onClick={handleSendInvitation}
-                className="flex-1 px-4 py-2.5 bg-[#4CA6EB] text-white rounded-lg text-sm font-medium hover:bg-[#3B82F6] transition-colors">
+                className="px-6 py-2.5 bg-[#4CA6EB] text-white rounded-[10px] text-sm font-semibold hover:bg-[#3B82F6] transition-all shadow-sm hover:shadow active:scale-[0.98]">
                 Send Invitation
               </button>
             </div>

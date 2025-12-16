@@ -12,7 +12,7 @@ export default function Header() {
       style={{ fontFamily: "Poppins, sans-serif" }}>
       <div className="flex items-center justify-between gap-4">
         {/* Search Bar */}
-        <div className="flex-1 max-w-2xl pl-12 md:pl-0">
+        <div className="flex-1 max-w-2xl pl-12 lg:pl-0">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <Input
