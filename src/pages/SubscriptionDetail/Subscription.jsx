@@ -98,7 +98,7 @@ export default function SubscriptionsBilling() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
             <Card key={index} className="bg-white border-0 shadow-sm">
               <CardContent className="p-6">
@@ -148,7 +148,7 @@ export default function SubscriptionsBilling() {
               <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors text-sm font-medium text-slate-700">
                 <Filter className="w-4 h-4" />
                 Filter
-              </button>
+              </button> 
             </div>
 
             {/* Table */}
@@ -175,13 +175,13 @@ export default function SubscriptionsBilling() {
                           {sub.user}
                         </span>
                       </td>
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-3">
                         <span className="text-sm text-[#65758B]">
                           {sub.email}
                         </span>
                       </td>
-                      <td className="py-4 px-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#32D48E] text-white">
+                      <td className="py-4 px-2 xl:px-4">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#32D48E] text-white">
                           {sub.status}
                         </span>
                       </td>

@@ -10,6 +10,7 @@ import {
   XAxis,
   YAxis,
   ResponsiveContainer,
+  Tooltip,
 } from "recharts";
 
 export default function SupplementExplorer() {
@@ -68,12 +69,12 @@ export default function SupplementExplorer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-y-6 xl:gap-y-0 xl:gap-6">
           {/* Left Sidebar - Top Trending Supplements */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 h-full">
             <Card className="bg-white border-0 shadow-sm">
               <CardHeader>
-                <CardTitle className=" font-semibold text-[#0F172A]">
+                <CardTitle className=" text-[16px] font-semibold text-[#334155]">
                   Top Trending Supplements
                 </CardTitle>
               </CardHeader>
@@ -96,7 +97,7 @@ export default function SupplementExplorer() {
                         item.highlighted ? "bg-[#E0F2FE]" : "hover:bg-slate-50"
                       }`}>
                       <span
-                        className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                        className={`flex items-center justify-center w-8 h-8 rounded-full text-xs font-semibold ${
                           item.highlighted
                             ? "bg-[#4CA6EB] text-white"
                             : "bg-slate-100 text-[#64748B]"
@@ -118,13 +119,13 @@ export default function SupplementExplorer() {
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="bg-white border-0 shadow-sm">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 text-[#64748B] rounded-lg">
+                <CardContent className="px-6 py-4">
+                  <div className="flex items-start gap-2">
+                    <div className="p-1 text-[#64748B] rounded-lg">
                       <Users className="w-6 h-6 " />
                     </div>
                     <div className="flex-1">
-                      <div className="text-[12px] text-[#64748B] mb-1">
+                      <div className="text-[12px] text-[#64748B] mb-1 font-medium">
                         ACTIVE USERS
                       </div>
                       <div className="text-[24px] font-bold text-[#0F172A] mb-1">
@@ -140,9 +141,9 @@ export default function SupplementExplorer() {
               </Card>
 
               <Card className="bg-white border-0 shadow-sm">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 text-[#64748B] rounded-lg">
+                <CardContent className="px-6 py-4">
+                  <div className="flex items-start gap-2">
+                    <div className="p-1 text-[#64748B] rounded-lg">
                       <MapPin className="w-6 h-6" />
                     </div>
                     <div className="flex-1">
@@ -164,15 +165,15 @@ export default function SupplementExplorer() {
             {/* Charts Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Gender Distribution */}
-              <Card className="bg-white border-0 shadow-sm">
+              <Card className="bg-white border-0 shadow-sm ">
                 <CardHeader>
                   <CardTitle className="text-[14px] font-semibold text-[#0F172A]">
                     Gender Distribution
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center justify-center mb-6">
-                    <div className="relative w-48 h-48">
+                  <div className="flex items-center justify-center  ">
+                    <div className="relative w-48 h-44 ">
                       <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
                           <Pie
@@ -187,22 +188,37 @@ export default function SupplementExplorer() {
                               <Cell key={`cell-${index}`} fill={entry.color} />
                             ))}
                           </Pie>
+                          <Tooltip
+                            contentStyle={{
+                              backgroundColor: "#fff",
+                              border: "1px solid #e2e8f0",
+                              borderRadius: "8px",
+                              fontSize: "10px",
+                              padding: "8px 12px",
+                              display: "flex",
+                              flexDirection: "column",
+                              color: "#131313",
+                            }}
+                            formatter={(value, name) => [
+                              <span
+                                style={{
+                                  color: "#4CA5EA",
+                                  fontWeight: "600",
+                                  fontSize: "12px",
+                                }}>
+                                {value}%
+                              </span>,
+                              name,
+                            ]}
+                          />
                         </PieChart>
                       </ResponsiveContainer>
-                      <div className="absolute inset-0 flex text-[#475569] items-center justify-center">
-                        <div className="text-center">
-                          <div className="text-2xl font-bold text-blue-600">
-                            70%
-                          </div>
-                          <div className="text-[12px] ">Female</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
-                  <div className="flex justify-center gap-4">
+                  <div className="flex justify-center gap-4 text-[#475569]">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full bg-[#4CA6EB]"></div>
-                      <span className="text-[12px] ">Male 65%</span>
+                      <span className="text-[12px]">Male 65%</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full bg-[#93C5ED]"></div>
@@ -223,15 +239,26 @@ export default function SupplementExplorer() {
                     Age Groups
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pl-0 pr-4 py-3">
                   <ResponsiveContainer width="100%" height={200}>
                     <BarChart data={ageData}>
                       <XAxis
                         dataKey="age"
                         stroke="#64748b"
-                        tick={{ fontSize: 12 }}
+                        tick={{
+                          fontSize: 10,
+                          color: "#666666",
+                          fontFamily: "inter",
+                        }}
                       />
-                      <YAxis stroke="#64748b" tick={{ fontSize: 12 }} />
+                      <YAxis
+                        stroke="#64748b"
+                        tick={{
+                          fontSize: 10,
+                          color: "#666666",
+                          fontFamily: "inter",
+                        }}
+                      />
                       <Bar
                         dataKey="value"
                         fill="#4CA6EB"
@@ -257,7 +284,7 @@ export default function SupplementExplorer() {
                     {geoData.map((item, index) => (
                       <div key={index}>
                         <div className="flex justify-between text-sm mb-2">
-                          <span className="text-[#334155] text-[12px] font-medium">
+                          <span className="text-[#334155] text-[12px] font-medium ">
                             {item.country}
                           </span>
                           <span className="text-slate-600">
@@ -288,7 +315,7 @@ export default function SupplementExplorer() {
                     {healthOutcomes.map((item, index) => (
                       <div
                         key={index}
-                        className="flex items-start gap-3 bg-[#F1F5F9] px-4 py-4 rounded-[8px]">
+                        className="flex items-start gap-3 bg-[#F1F5F9] px-4 py-[15px] 2xl:py-[13.5px] rounded-[8px]">
                         <div
                           className={`w-2 h-2 rounded-full mt-1.5`}
                           style={{ backgroundColor: item.color }}></div>
@@ -298,7 +325,7 @@ export default function SupplementExplorer() {
                           </div>
                           <div className="text-[12px] text-[#64748B]">
                             Reported by{" "}
-                            <span className="text-[#334155] font-semibold text-[12px]">
+                            <span className="text-[#334155] font-semibold text-[14px]">
                               {item.percentage}%
                             </span>{" "}
                             of users
@@ -316,3 +343,4 @@ export default function SupplementExplorer() {
     </div>
   );
 }
+ 
